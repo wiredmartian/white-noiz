@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{track?.artist.display_name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content *ngIf="track">
+  <ion-card>
+      <img src="http://localhost:49749/{{track.artwork_url}}"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{track.track_title}}
+          </ion-card-title>
+        <p>
+          {{track.description}}
+        </p>
+        <ion-row no-padding>
+            <ion-col>
+              <button ion-button clear small color="danger" icon-start>
+                <ion-icon name='heart'></ion-icon>
+                {{track.num_likes}}
+              </button>
+            </ion-col>
+            <ion-col text-center>
+              <button ion-button clear small color="danger" icon-start>
+                <ion-icon name='play'></ion-icon>
+                {{track.num_plays}}
+              </button>
+            </ion-col>
+            <ion-col text-right>
+              <button ion-button clear small color="danger" icon-start>
+                <ion-icon name='chatboxes'></ion-icon>
+                {{track.num_comments}}
+              </button>
+            </ion-col>
+          </ion-row>
+      </ion-card-content>
+    </ion-card>
+  <ion-card>
+    <audio preload="metadata" controls src="http://localhost:8749/{{track.audio_url}}"></audio>
+  </ion-card>
+</ion-content>

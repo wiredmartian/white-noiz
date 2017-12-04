@@ -11,13 +11,14 @@ import { LoginPage } from '../pages/login/login';
 import { MapPage } from '../pages/map/map';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
-import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
 import { SupportPage } from '../pages/support/support';
 
 import { ConferenceData } from '../providers/conference-data';
-import { UserData } from '../providers/user-data';
+import { AccountProvider } from '../providers/account/account';
+
+import { HomePage } from '../pages/home/home';
 
 export interface PageInterface {
   title: string;
@@ -61,7 +62,7 @@ export class ConferenceApp {
 
   constructor(
     public events: Events,
-    public userData: UserData,
+    public accProvider: AccountProvider,
     public menu: MenuController,
     public platform: Platform,
     public confData: ConferenceData,
@@ -75,7 +76,7 @@ export class ConferenceApp {
         if (hasSeenTutorial) {
           this.rootPage = TabsPage;
         } else {
-          this.rootPage = TutorialPage;
+          this.rootPage = HomePage;
         }
         this.platformReady()
       });
@@ -84,7 +85,7 @@ export class ConferenceApp {
     confData.load();
 
     // decide which menu items should be hidden by current login status stored in local storage
-    this.userData.hasLoggedIn().then((hasLoggedIn) => {
+    this.accProvider.hasLoggedIn().then((hasLoggedIn) => {
       this.enableMenu(hasLoggedIn === true);
     });
     this.enableMenu(true);
@@ -116,12 +117,12 @@ export class ConferenceApp {
 
     if (page.logsOut === true) {
       // Give the menu time to close before changing to logged out
-      this.userData.logout();
+      this.accProvider.logout();
     }
   }
 
   openTutorial() {
-    this.nav.setRoot(TutorialPage);
+    this.nav.setRoot(HomePage);
   }
 
   listenToLoginEvents() {

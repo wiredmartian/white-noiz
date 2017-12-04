@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{artist_data?.display_name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="artist_data">
+      <img src="http://localhost:8749/{{artist_data.profile_img_url}}"/>
+     <ion-card-content>
+       <ion-card-title>
+         {{artist_data.display_name}} <ion-note>{{artist_data.first_name}} {{artist_data.last_name}}</ion-note>
+       </ion-card-title>
+       <p>
+         {{artist_data.bio}} <br>
+         <ion-note>Based In {{artist_data.city}}</ion-note>
+       </p>
+     </ion-card-content>
+ <ion-row no-padding>
+   <ion-col>
+     <button ion-button clear small color="danger" icon-start>
+       <ion-icon name='musical-notes'></ion-icon>
+       {{artist_data.num_tracks}}
+     </button>
+   </ion-col>
+   <ion-col text-center>
+     <button ion-button clear small color="danger" icon-start>
+       <ion-icon name='disc'></ion-icon>
+       {{artist_data.num_albums}}
+     </button>
+   </ion-col>
+   <ion-col text-right>
+     <button ion-button clear small color="danger" icon-start>
+       <ion-icon name='person'></ion-icon>
+       {{artist_data.num_followers}}
+     </button>
+   </ion-col>
+ </ion-row>
+</ion-card>
+
+<ion-card *ngIf="links">
+  <ion-card-content>
+    <p>
+      <a target="_blank" href="{{links.twitter}}"><ion-icon name="twitter" color="primary"></ion-icon></a> &nbsp;&nbsp;
+      <a target="_blank" href="{{links.artist_instagram}}"><ion-icon name="instagram"></ion-icon></a> &nbsp;&nbsp;
+      <a target="_blank" href="{{links.artist_facebook}}"><ion-icon name="facebook"></ion-icon></a> &nbsp;&nbsp;
+      <a target="_blank" href="{{links.artist_youtube}}"><ion-icon name="youtube"></ion-icon></a>
+    </p>
+  </ion-card-content>
+</ion-card>
+
+  <ion-card *ngIf="tracks">
+    <ion-card-content>
+      <ion-card-title>
+        Tracks
+      </ion-card-title>
+    </ion-card-content>
+     <ion-list>
+         <ion-item *ngFor="let track of tracks">
+            <ion-thumbnail item-start>
+              <img src="http://localhost:49749/{{track.artwork_url}}">
+            </ion-thumbnail>
+            <h2>{{track.track_title}}</h2>
+            <p>
+              <ion-icon name="thumbs-up"> {{track.num_likes}}</ion-icon> &nbsp;&nbsp;
+              <ion-icon name="play"> {{track.num_plays}}</ion-icon> &nbsp;&nbsp;
+              <ion-icon name="download"> {{track.num_downloads}}</ion-icon> &nbsp;&nbsp;
+            </p>
+      </ion-item>
+     </ion-list>
+     <ion-card-content>
+     <a ion-button color="dark" block target="_blank" href="#">More</a>
+   </ion-card-content>
+   </ion-card>
+
+   <ion-card *ngIf="albums">
+     <ion-card-content>
+       <ion-card-title>
+         Albums
+       </ion-card-title>
+     </ion-card-content>
+      <ion-list>
+          <ion-item *ngFor="let album of albums">
+             <ion-thumbnail item-start>
+               <img src="http://localhost:49749/{{album.album_artwork_url}}">
+             </ion-thumbnail>
+             <h2>{{album.album_title}}</h2>
+             <p>
+               <ion-icon name="musical-notes"> {{album.num_of_tracks}}</ion-icon> &nbsp;&nbsp;
+               <ion-icon name="play"> {{album.num_of_plays}}</ion-icon> &nbsp;&nbsp;
+             </p>
+       </ion-item>
+      </ion-list>
+      <ion-card-content>
+      <a ion-button color="dark" block target="_blank" href="#">More</a>
+    </ion-card-content>
+    </ion-card>
+</ion-content>

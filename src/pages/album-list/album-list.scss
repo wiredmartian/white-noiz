@@ -1,0 +1,25 @@
+page-album-list {
+    .card-title-ios {
+        display: block;
+        font-size: 1.5rem;
+        line-height: 1.2;
+        margin: 0;
+        padding: 2px;
+        color: #222;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .card-content-ios {
+        padding: 13px 5px 0px;
+        font-size: 1.4rem;
+        line-height: 1.4;
+    }
+    .button-ios {
+        border-radius: 4px;
+        height: 2.8em;
+        font-size: 1.6rem;
+        margin: 0;
+        padding: 2px;
+    }
+}

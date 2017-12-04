@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce padding>
+<ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" pager>
+  <ion-slide>
+    <img src="assets/img/ica-slidebox-img-2.png" class="slide-image"/>
+    <h2 class="slide-title">New And Hot!</h2>
+    <p>Welcome to <b>RadApp!</b> Here's today's fresh and hop tracks.</p>
+  </ion-slide>
+
+  <ion-slide *ngFor="let track of topTracks">
+    <img src="http://localhost:49749/{{track.artwork_url}}" class="slide-image"/>
+    <h2 class="slide-title">
+      <b>{{track.track_title}}</b>
+    </h2>
+    <p>
+      {{track.description}}
+    </p>
+    <p>
+    <button ion-button small clear color="primary">
+          <ion-icon name="play" color="primary"> {{track.num_plays}}</ion-icon>
+    </button>
+    <button ion-button small clear color="primary">
+        <ion-icon name="heart"> {{track.num_likes}}</ion-icon>
+    </button>
+    <button ion-button small clear color="primary">
+        <ion-icon name="download"> {{track.num_downloads}}</ion-icon>
+    </button>
+  </p>
+  </ion-slide>
+</ion-slides>
+</ion-content>

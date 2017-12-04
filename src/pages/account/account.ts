@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-
 import { AlertController, NavController } from 'ionic-angular';
-
-import { UserData } from '../../providers/user-data';
-
+import { AccountProvider } from '../../providers/account/account';
 
 @Component({
   selector: 'page-account',
@@ -11,17 +8,29 @@ import { UserData } from '../../providers/user-data';
 })
 export class AccountPage {
   username: string;
+  picture: string;
 
-  constructor(public alertCtrl: AlertController, public nav: NavController, public userData: UserData) {
+  constructor(
+    public alertCtrl: AlertController, 
+    public nav: NavController, 
+    public accProvider: AccountProvider) {
 
   }
 
   ngAfterViewInit() {
     this.getUsername();
+
   }
 
   updatePicture() {
     console.log('Clicked to update picture');
+  }
+  getProfilePicture(){
+    if(this.accProvider.hasLoggedIn()){
+      this.accProvider.getUserPicture(this.username).subscribe(res => {
+        this.picture = res;
+      });
+    }
   }
 
   // Present an alert with the current username populated
@@ -42,7 +51,7 @@ export class AccountPage {
     alert.addButton({
       text: 'Ok',
       handler: (data: any) => {
-        this.userData.setUsername(data.username);
+        this.accProvider.setUsername(data.username);
         this.getUsername();
       }
     });
@@ -51,7 +60,7 @@ export class AccountPage {
   }
 
   getUsername() {
-    this.userData.getUsername().then((username) => {
+    this.accProvider.getUsername().then((username) => {
       this.username = username;
     });
   }
@@ -61,7 +70,7 @@ export class AccountPage {
   }
 
   logout() {
-    this.userData.logout();
+    this.accProvider.logout();
     this.nav.setRoot('LoginPage');
   }
 

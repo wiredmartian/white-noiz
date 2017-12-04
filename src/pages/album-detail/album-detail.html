@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <span *ngIf="album">
+      <ion-title>{{album.album_title}}</ion-title>
+    </span>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-card>
+    <div *ngIf="album">
+      <img src="http://localhost:49749/{{album.album_artwork_url}}"/>
+     <ion-card-content>
+       <ion-card-title>
+         {{album.album_title}} <ion-note>{{album.album_genre}}</ion-note>
+       </ion-card-title>
+       <p>
+         {{album.description}}
+       </p>
+     </ion-card-content>
+  </div>
+ <ion-row>
+   <ion-col>
+     <button ion-button clear small color="danger" icon-start>
+       <ion-icon name='star'></ion-icon>
+       Favorite
+     </button>
+   </ion-col>
+   <ion-col text-center>
+     <button ion-button clear small color="danger" icon-start>
+       <ion-icon name='musical-notes'></ion-icon>
+       Listen
+     </button>
+   </ion-col>
+   <ion-col text-right>
+     <button ion-button clear small color="danger" icon-start>
+       <ion-icon name='share-alt'></ion-icon>
+       Share
+     </button>
+   </ion-col>
+ </ion-row>
+</ion-card>
+
+<ion-card>
+ <ion-list>
+     <ion-item-sliding *ngFor="let track of albumTracks">
+      <ion-item (click)="play(track.src)">
+        <!--<ion-icon item-start name="download"></ion-icon>-->
+        <h2>{{track.title}}</h2>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="primary">
+          <ion-icon name="play"></ion-icon>
+          Play
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="heart"></ion-icon>
+          Love
+        </button>
+    </ion-item-options>
+    <ion-item-options side="right">
+      <button ion-button color="primary" (click)="goToTrackDetail(track)">
+        <ion-icon name="arrow-dropright-circle"></ion-icon>
+        GoTo
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+ </ion-list>
+</ion-card>
+
+<ion-grid id="audioplayer">
+    <ion-row>
+      <ion-col col-4>
+        <ion-icon name="skip-backward" style="font-size:3em"></ion-icon>
+      </ion-col>
+      <ion-col col-4>
+        <ion-icon name="play" isActive="true" style="font-size:3em"></ion-icon>
+      </ion-col>
+      <ion-col col-4>
+        <ion-icon name="skip-forward" style="font-size:3em"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

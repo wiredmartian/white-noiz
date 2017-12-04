@@ -28,6 +28,19 @@ import { SupportPage } from '../pages/support/support';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
+import { AlbumProvider } from '../providers/album/album';
+import { TrackProvider } from '../providers/track/track';
+import { ArtistProvider } from '../providers/artist/artist';
+import { AccountProvider } from '../providers/account/account';
+import { ApiProvider } from '../providers/api/api';
+
+import { HomePage } from '../pages/home/home';
+import { AlbumListPage } from '../pages/album-list/album-list';
+import { AlbumDetailPage } from '../pages/album-detail/album-detail';
+import { TrackListPage } from '../pages/track-list/track-list';
+import { TrackDetailPage } from '../pages/track-detail/track-detail';
+import { ArtistDetailPage } from '../pages/artist-detail/artist-detail';
+import { AudioProvider } from '../providers/audio/audio';
 
 
 @NgModule({
@@ -46,7 +59,14 @@ import { UserData } from '../providers/user-data';
     SpeakerListPage,
     TabsPage,
     TutorialPage,
-    SupportPage
+    SupportPage,
+
+    AlbumListPage,
+    AlbumDetailPage,
+    TrackListPage,
+    TrackDetailPage,
+    ArtistDetailPage,
+    HomePage
   ],
   imports: [
     BrowserModule,
@@ -86,14 +106,28 @@ import { UserData } from '../providers/user-data';
     SpeakerListPage,
     TabsPage,
     TutorialPage,
-    SupportPage
+    SupportPage,
+
+    AlbumListPage,
+    AlbumDetailPage,
+    TrackListPage,
+    TrackDetailPage,
+    ArtistDetailPage,
+    HomePage
+
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ConferenceData,
     UserData,
     InAppBrowser,
-    SplashScreen
+    SplashScreen,
+    AlbumProvider,
+    TrackProvider,
+    ArtistProvider,
+    AccountProvider,
+    ApiProvider,
+    AudioProvider
   ]
 })
 export class AppModule { }

@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Albums</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+    <ion-row>
+        <ion-col col-6 *ngFor="let album of albums">
+          <ion-card>
+              <img src="http://localhost:49749/{{album.album_artwork_url}}" (click)="goToAlbumDetails(album.album_id)" />
+          <ion-card-content>
+            <ion-card-title>{{album.album_title}}</ion-card-title>
+            <button ion-button clear color="dark">
+              <h3>{{album.artist_display_name}}</h3>
+            </button>
+          </ion-card-content>
+        </ion-card>
+        </ion-col>
+      </ion-row>
+  <!--<ion-card *ngFor="let album of albums">
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="http://localhost:8749{{album.artist_profile_img_url}}">
+      </ion-avatar>
+      <h2>{{album.artist_display_name}}</h2>
+      <p (click)="goToAlbumDetails(album.album_id)">{{album.album_title}}</p>
+    </ion-item>
+    <ion-thumbnail>
+      <img src="http://localhost:49749/{{album.album_artwork_url}}" (click)="goToAlbumDetails(album.album_id)">
+  </ion-thumbnail>
+
+    <ion-card-content>
+      <p>{{album.description}}</p>
+    </ion-card-content>
+
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="musical-notes"></ion-icon>
+            <div>{{album.num_tracks}} Tracks</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-left clear small>
+            <ion-icon name="play"></ion-icon>
+            <div>{{album.num_plays}} Plays</div>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button clear small>
+            <div>{{album.last_updated}}</div>
+          </button>
+        </ion-col>
+      </ion-row>
+  </ion-card>-->
+</ion-content>
