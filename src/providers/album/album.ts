@@ -10,12 +10,12 @@ export class AlbumProvider {
   constructor(private provider: ApiProvider) { }
 
   getAlbums(){
-    return this.provider.http.get(this.provider.url + this.endpoint)
+    return this.provider.http.get(this.provider.apiUrl + this.endpoint)
     .map(res => res.json());
   }
 
   getOneAlbum(id: any){
-    return this.provider.http.get(this.provider.url + this.endpoint + id)
+    return this.provider.http.get(this.provider.apiUrl + this.endpoint + id)
     .map(res => res.json());
   }
 }

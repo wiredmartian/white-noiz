@@ -17,7 +17,7 @@ export class AccountProvider {
   }
 
   requestToken(credentials : any){
-    return this.provider.http.post(this.provider.url + this.endpoint, credentials)
+    return this.provider.http.post(this.provider.apiUrl + this.endpoint, credentials)
     .map(res => res.json());
   };
 
@@ -60,7 +60,7 @@ export class AccountProvider {
   };
 
   getUserPicture(username: string){
-    return this.provider.http.get(this.provider.url + 'api/artists/profile/' + username)
+    return this.provider.http.get(this.provider.apiUrl + 'api/artists/profile/' + username)
     .map(res => res.json());
   }
 }

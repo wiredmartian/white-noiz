@@ -8,8 +8,35 @@
 </ion-header>
 
 <ion-content *ngIf="track">
+    <!--<div class="row">
+        <div class="large-12 medium-12 small-12 columns">
+          <div id="single-song-player">
+            <img amplitude-song-info="cover_art_url" amplitude-main-song-info="true"/>
+            <div class="bottom-container">
+              <progress class="amplitude-song-played-progress" amplitude-main-song-played-progress="true" id="song-played-progress"></progress>
+  
+              <div class="time-container">
+                <span class="current-time">
+                  <span class="amplitude-current-minutes" amplitude-main-current-minutes="true"></span>:<span class="amplitude-current-seconds" amplitude-main-current-seconds="true"></span>
+                </span>
+                <span class="duration">
+                  <span class="amplitude-duration-minutes" amplitude-main-duration-minutes="true"></span>:<span class="amplitude-duration-seconds" amplitude-main-duration-seconds="true"></span>
+                </span>
+              </div>
+  
+              <div class="control-container">
+                <div class="amplitude-play-pause" amplitude-main-play-pause="true" id="play-pause"></div>
+                <div class="meta-container">
+                  <span amplitude-song-info="name" amplitude-main-song-info="true" class="song-name"></span>
+                  <span amplitude-song-info="artist" amplitude-main-song-info="true"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>-->
   <ion-card>
-      <img src="http://localhost:49749/{{track.artwork_url}}"/>
+      <img src="http://whitenoiz.azurewebsites.net/{{track.artwork_url}}"/>
       <ion-card-content>
         <ion-card-title>
           {{track.track_title}}
@@ -40,6 +67,6 @@
       </ion-card-content>
     </ion-card>
   <ion-card>
-    <audio preload="metadata" controls src="http://localhost:8749/{{track.audio_url}}"></audio>
+    <audio preload="metadata" controls src="http://whitenoiz.azurewebsites.net/{{track.audio_url}}"></audio>
   </ion-card>
 </ion-content>

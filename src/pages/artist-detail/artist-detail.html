@@ -9,7 +9,7 @@
 
 <ion-content>
   <ion-card *ngIf="artist_data">
-      <img src="http://localhost:8749/{{artist_data.profile_img_url}}"/>
+      <img src="http://whitenoiz.azurewebsites.net/{{artist_data.profile_img_url}}"/>
      <ion-card-content>
        <ion-card-title>
          {{artist_data.display_name}} <ion-note>{{artist_data.first_name}} {{artist_data.last_name}}</ion-note>
@@ -61,7 +61,7 @@
      <ion-list>
          <ion-item *ngFor="let track of tracks">
             <ion-thumbnail item-start>
-              <img src="http://localhost:49749/{{track.artwork_url}}">
+              <img src="http://whitenoiz.azurewebsites.net/{{track.artwork_url}}">
             </ion-thumbnail>
             <h2>{{track.track_title}}</h2>
             <p>
@@ -72,7 +72,6 @@
       </ion-item>
      </ion-list>
      <ion-card-content>
-     <a ion-button color="dark" block target="_blank" href="#">More</a>
    </ion-card-content>
    </ion-card>
 
@@ -85,7 +84,7 @@
       <ion-list>
           <ion-item *ngFor="let album of albums">
              <ion-thumbnail item-start>
-               <img src="http://localhost:49749/{{album.album_artwork_url}}">
+               <img src="http://whitenoiz.azurewebsites.net/{{album.album_artwork_url}}">
              </ion-thumbnail>
              <h2>{{album.album_title}}</h2>
              <p>
@@ -95,7 +94,6 @@
        </ion-item>
       </ion-list>
       <ion-card-content>
-      <a ion-button color="dark" block target="_blank" href="#">More</a>
     </ion-card-content>
     </ion-card>
 </ion-content>

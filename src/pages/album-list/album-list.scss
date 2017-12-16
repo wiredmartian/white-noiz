@@ -1,5 +1,5 @@
 page-album-list {
-    .card-title-ios {
+    .card-title-ios, .card-title {
         display: block;
         font-size: 1.5rem;
         line-height: 1.2;
@@ -10,12 +10,12 @@ page-album-list {
         white-space: nowrap;
         overflow: hidden;
     }
-    .card-content-ios {
+    .card-content-ios, .card-content {
         padding: 13px 5px 0px;
         font-size: 1.4rem;
         line-height: 1.4;
     }
-    .button-ios {
+    .button-ios, .button-md {
         border-radius: 4px;
         height: 2.8em;
         font-size: 1.6rem;

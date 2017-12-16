@@ -6,11 +6,13 @@ import 'rxjs/Rx';
 @Injectable()
 export class ApiProvider {
   http: Http;
-  url: string;
+  apiUrl: string;
+  mediaURL: string;
+
 
   constructor(public _http: Http) {
     this.http = _http;
-    this.url = 'http://localhost:49749/';
+    this.apiUrl = 'http://api-whitenoiz.azurewebsites.net/';
   }
 
 }

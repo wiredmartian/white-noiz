@@ -12,7 +12,7 @@ export class ArtistProvider {
 
   }
   getOneArtist(id: any){
-    return this.provider.http.get(this.provider.url + this.endpoint + id)
+    return this.provider.http.get(this.provider.apiUrl + this.endpoint + id)
     .map(res => res.json());
   }
 

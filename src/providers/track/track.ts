@@ -10,11 +10,11 @@ export class TrackProvider {
   constructor(public provider: ApiProvider) {
   }
   getTracks(){
-    return this.provider.http.get(this.provider.url + this.endpoints[0])
+    return this.provider.http.get(this.provider.apiUrl + this.endpoints[0])
     .map(res => res.json());
   }
   getTopTracks(){
-    return this.provider.http.get(this.provider.url + this.endpoints[1])
+    return this.provider.http.get(this.provider.apiUrl + this.endpoints[1])
     .map(res => res.json());
   }
 }

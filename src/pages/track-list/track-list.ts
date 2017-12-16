@@ -17,6 +17,7 @@ export class TrackListPage {
   track: TrackInterface;
   tracks: TrackInterface[];
   artist: ArtistInterface;
+  mediaURL: string = 'http://whitenoiz.azurewebsites.net'
 
   constructor(
     public navCtrl: NavController, 

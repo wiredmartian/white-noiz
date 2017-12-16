@@ -11,7 +11,8 @@ import { AlbumProvider } from '../../providers/album/album';
   templateUrl: 'album-list.html',
 })
 export class AlbumListPage {
-  albums: AlbumInterface[]
+  albums: AlbumInterface[];
+  mediaURL: string = 'http://whitenoiz.azurewebsites.net';
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,

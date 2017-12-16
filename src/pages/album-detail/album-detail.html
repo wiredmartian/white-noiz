@@ -12,7 +12,7 @@
 <ion-content no-padding>
   <ion-card>
     <div *ngIf="album">
-      <img src="http://localhost:49749/{{album.album_artwork_url}}"/>
+      <img src="{{mediaURL}}{{album.album_artwork_url}}"/>
      <ion-card-content>
        <ion-card-title>
          {{album.album_title}} <ion-note>{{album.album_genre}}</ion-note>
@@ -47,10 +47,7 @@
 <ion-card>
  <ion-list>
      <ion-item-sliding *ngFor="let track of albumTracks">
-      <ion-item (click)="play(track.src)">
-        <!--<ion-icon item-start name="download"></ion-icon>-->
-        <h2>{{track.title}}</h2>
-      </ion-item>
+      <ion-item (click)="onPlay(track, $event)">{{track.title}}</ion-item>
       <ion-item-options side="left">
         <button ion-button color="primary">
           <ion-icon name="play"></ion-icon>
@@ -77,7 +74,7 @@
         <ion-icon name="skip-backward" style="font-size:3em"></ion-icon>
       </ion-col>
       <ion-col col-4>
-        <ion-icon name="play" isActive="true" style="font-size:3em"></ion-icon>
+        <ion-icon name="play" isActive="true" style="font-size:3em" (click)="onPause()"></ion-icon>
       </ion-col>
       <ion-col col-4>
         <ion-icon name="skip-forward" style="font-size:3em"></ion-icon>

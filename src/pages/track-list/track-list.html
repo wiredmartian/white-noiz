@@ -24,7 +24,7 @@
   <ion-list>
     <ion-item *ngFor="let track of tracks">
         <ion-thumbnail item-start>
-          <img src="http://localhost:49749/{{track.artwork_url}}">
+          <img src="{{mediaURL}}{{track.artwork_url}}">
         </ion-thumbnail>
         <button ion-button small clear color="dark" (click)="viewArtist(track.artist)">
           <h2>{{track.artist_name}}</h2>

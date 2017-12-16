@@ -1,4 +1,4 @@
-export interface AudioTracks{
+export interface AudioTrack{
   src : string,
   artist : string,
   title : string,

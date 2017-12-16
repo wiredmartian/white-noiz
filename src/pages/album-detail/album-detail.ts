@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AudioTrack } from '../../interfaces/audio';
 import { AlbumProvider } from '../../providers/album/album';
+import { AudioProvider } from '../../providers/audio/audio';
 import { TrackDetailPage } from '../track-detail/track-detail';
 import { TrackInterface } from '../../interfaces/track';
 import { AlbumInterface } from '../../interfaces/album';
 import WaveSurfer from 'wavesurfer.js';
+//import Observer from 'wavesurfer.js/src/util/observer.js';
 
 @IonicPage()
 @Component({
@@ -15,32 +18,33 @@ export class AlbumDetailPage {
   id: any;
   album: AlbumInterface;
   albumTracks: TrackInterface[];
+  element: HTMLElement;
   wavesurfer: WaveSurfer;
+  mediaURL: string = 'http://whitenoiz.azurewebsites.net'
+  params : any = {
+    container: '#waveform',
+    waveColor: 'violet',
+    backend: 'MediaElement',
+    progressColor: '#8e3cfe',
+    barWidth: 0,
+    height: 18,
+    scrollParent: false,
+    fillParent: true,
+    hideScrollbar: true,
+    normalize: true,
+  };
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private provider: AlbumProvider) {
-  }
+    private provider: AlbumProvider,
+    public audio: AudioProvider
+  ) { }
+
   ionViewDidLoad(){
     this.getAlbum();
   }
-  ngAfterViewInit(){
-    requestAnimationFrame(() =>{
-      this.wavesurfer = WaveSurfer.create({
-        container: '#waveform',
-        waveColor: 'violet',
-        backend: 'MediaElement',
-        progressColor: '#8e3cfe',
-        barWidth: 0,
-        height: 18,
-        scrollParent: false,
-        fillParent: true,
-        hideScrollbar: true,
-        normalize: true,
-      });
-    });
-  }
+
   getAlbum(){
     this.provider.getOneAlbum(this.navParams.get('id')).subscribe(response => {
       this.albumTracks = response.album_tracks;
@@ -53,17 +57,17 @@ export class AlbumDetailPage {
     });
   }
 
-  play(src: string){
-    
-    this.wavesurfer.load(src);
-    this.wavesurfer.loaded = true;
-    this.wavesurfer.on('ready', function(){
+  onPlay(track: AudioTrack, $event){
+    this.element = $event.target;
+    this.audio.Play(track, this.element);
+  }
+
+  onReady() : void {
+    this.wavesurfer.on('ready', () =>{
       this.wavesurfer.play();
     });
-    this.wavesurfer.on('play', function(){
-      let seconds = parseInt((this.wavesurfer.getDuration() % 60).toString());
-      let minutes = parseInt(((this.wavesurfer.getCurrentTime() / 60) % 60).toString());
-      console.log(minutes +'.'+seconds);
-    });
+  }
+  onPause() : void {
+    this.audio.Pause();
   }
 }

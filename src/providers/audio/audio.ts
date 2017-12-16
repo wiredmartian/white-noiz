@@ -1,79 +1,92 @@
 import { Injectable } from '@angular/core';
-import { AudioTracks } from '../../interfaces/audio';
+import { AudioTrack } from '../../interfaces/audio';
 import WaveSurfer from 'wavesurfer.js';
 
 @Injectable()
 export class AudioProvider {
-  wavesurfer: any;
-  audio: AudioTracks;
+  wavesurfer: WaveSurfer;
+  audio: AudioTrack;
+  mediaURL: string = 'http://whitenoiz.azurewebsites.net';
+  params : any = {
+    container: '#waveform',
+    waveColor: 'violet',
+    backend: 'MediaElement',
+    progressColor: '#8e3cfe',
+    barWidth: 0,
+    height: 18,
+    scrollParent: false,
+    fillParent: true,
+    hideScrollbar: true,
+    normalize: true,
+  };
 
   constructor() {
-    this.onInitPlugin();
-  }
-
-  onInitPlugin() : void{
-    this.wavesurfer = WaveSurfer.create({
-      container: '#waveform',
-      waveColor: 'violet',
-      backend: 'MediaElement',
-      progressColor: '#8e3cfe',
-      barWidth: 0,
-      height: 18,
-      scrollParent: false,
-      fillParent: true,
-      hideScrollbar: true,
-      normalize: true,
-    });
+    this.wavesurfer = new WaveSurfer.create(this.params);
   }
 
   setPeaks() : void{
     this.wavesurfer.backend.peaks = [0.000, 0.000, 0.000, 0.000, 0.000, 0.000];
   }
 
+  initAudio(track: AudioTrack, e: HTMLElement): void{
+    /*console.log(e);
+    for(let i = 0; i <= document.childElementCount; i++){
+      if(document.children.item(i).classList.contains('active')){
+        document.children.item(i).classList.remove('active');
+      }
+    }*/
+    e.classList.add('active');
+    this.wavesurfer.empty();
+    /**see attributes */
 
-  onPlay(track: AudioTracks, element: HTMLElement){
-    if(element.classList.contains('playing')){
-      this.wavesurfer.loaded = true;
+    console.log(track);
+  }
+  Play(track: AudioTrack, e: HTMLElement){
+    this.wavesurfer.backend.peaks = [0.000, 0.000, 0.000, 0.000, 0.000, 0.000];
+    if(e.classList.contains('active')){
       this.wavesurfer.play();
     } else {
-      element.classList.add('playing');
+
+      if(this.wavesurfer.isPlaying()){
+        this.wavesurfer.pause();
+      }
       this.wavesurfer.empty();
-      this.wavesurfer.load(track.src);
-      this.onReady();
+      this.initAudio(track, e);
+      this.wavesurfer.load(this.mediaURL + track.src, this.wavesurfer.backend.peaks);
+      this.Ready();
+      console.log(this.GetDuration());
+      this.AudioProgress();
     }
   }
 
-  onPause(){
+  Ready() : void {
+    this.wavesurfer.on('ready', () =>{
+      this.wavesurfer.play();
+    });
+  }
+  Pause() : void {
     if(this.wavesurfer.isPlaying()){
       this.wavesurfer.pause();
     }
   }
+  GetDuration() : string {
+    this.wavesurfer.on('play', () =>{
+      let seconds = parseInt((this.wavesurfer.backend.getDuration() % 60).toString());
+      let minutes = parseInt(((this.wavesurfer.backend.getDuration() / 60) % 60).toString());
+      return (minutes + '.' + seconds);
+    });
+    return '0.00';
+  }
 
-  onPlaying(element: HTMLElement){
-    this.wavesurfer.on('play', function(){
-      let seconds = parseInt((this.wavesurfer.getDuration() % 60).toString());
-      let minutes = parseInt(((this.wavesurfer.getCurrentTime() / 60) % 60).toString());
-      if(seconds < 10){
-        element.innerHTML = minutes + '.0' + seconds;
+  AudioProgress(){
+    this.wavesurfer.on('audioprogress', () =>{
+      let secs = parseInt((this.wavesurfer.getCurrentTime() % 60).toString());
+      let mins = parseInt(((this.wavesurfer.getCurrentTime() / 60) % 60).toString());
+      if(secs < 10){
+        console.log(mins + '.' + '0' + secs)
       } else {
-        element.innerHTML = minutes + '.' + seconds;
+        console.log(mins + '.' + secs);
       }
     });
-  }
-
-  onAudioProgress(){
-    this.wavesurfer.on('audioprogress', function(){
-      
-    })
   }  
-
-  onReady(){
-    if(!this.wavesurfer.loaded){
-      this.wavesurfer.loaded = true;
-      this.wavesurfer.on('ready', function(){
-        this.wavesurfer.play();
-      });
-    }
-  }
-
 }
