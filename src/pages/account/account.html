@@ -9,7 +9,7 @@
 
 <ion-content class="outer-content">
   <div padding-top text-center *ngIf="username">
-    <img src="http://localhost:49749/{{picture}}" alt="avatar">
+    <img *ngIf="picture" src="{{picture}}" alt="avatar">
     <h2>{{username}}</h2>
 
     <ion-list inset>

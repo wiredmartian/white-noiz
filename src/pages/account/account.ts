@@ -19,7 +19,7 @@ export class AccountPage {
 
   ngAfterViewInit() {
     this.getUsername();
-
+    this.getProfilePicture();
   }
 
   updatePicture() {
@@ -28,7 +28,7 @@ export class AccountPage {
   getProfilePicture(){
     if(this.accProvider.hasLoggedIn()){
       this.accProvider.getUserPicture(this.username).subscribe(res => {
-        this.picture = res;
+        this.picture = 'http://whitenoiz.azurewebsites.net/uploads/' + res;
       });
     }
   }

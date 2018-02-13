@@ -12,21 +12,13 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ConferenceApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
-import { PopoverPage } from '../pages/about-popover/about-popover';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
-import { MapPage } from '../pages/map/map';
-import { SchedulePage } from '../pages/schedule/schedule';
-import { ScheduleFilterPage } from '../pages/schedule-filter/schedule-filter';
-import { SessionDetailPage } from '../pages/session-detail/session-detail';
 import { SignupPage } from '../pages/signup/signup';
-import { SpeakerDetailPage } from '../pages/speaker-detail/speaker-detail';
-import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SupportPage } from '../pages/support/support';
 
-import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
 import { AlbumProvider } from '../providers/album/album';
 import { TrackProvider } from '../providers/track/track';
@@ -49,14 +41,7 @@ import { AudioProvider } from '../providers/audio/audio';
     AboutPage,
     AccountPage,
     LoginPage,
-    MapPage,
-    PopoverPage,
-    SchedulePage,
-    ScheduleFilterPage,
-    SessionDetailPage,
     SignupPage,
-    SpeakerDetailPage,
-    SpeakerListPage,
     TabsPage,
     TutorialPage,
     SupportPage,
@@ -74,12 +59,6 @@ import { AudioProvider } from '../providers/audio/audio';
     IonicModule.forRoot(ConferenceApp, {}, {
       links: [
         { component: TabsPage, name: 'TabsPage', segment: 'tabs-page' },
-        { component: SchedulePage, name: 'Schedule', segment: 'schedule' },
-        { component: SessionDetailPage, name: 'SessionDetail', segment: 'sessionDetail/:sessionId' },
-        { component: ScheduleFilterPage, name: 'ScheduleFilter', segment: 'scheduleFilter' },
-        { component: SpeakerListPage, name: 'SpeakerList', segment: 'speakerList' },
-        { component: SpeakerDetailPage, name: 'SpeakerDetail', segment: 'speakerDetail/:speakerId' },
-        { component: MapPage, name: 'Map', segment: 'map' },
         { component: AboutPage, name: 'About', segment: 'about' },
         { component: TutorialPage, name: 'Tutorial', segment: 'tutorial' },
         { component: SupportPage, name: 'SupportPage', segment: 'support' },
@@ -96,14 +75,7 @@ import { AudioProvider } from '../providers/audio/audio';
     AboutPage,
     AccountPage,
     LoginPage,
-    MapPage,
-    PopoverPage,
-    SchedulePage,
-    ScheduleFilterPage,
-    SessionDetailPage,
     SignupPage,
-    SpeakerDetailPage,
-    SpeakerListPage,
     TabsPage,
     TutorialPage,
     SupportPage,
@@ -118,7 +90,6 @@ import { AudioProvider } from '../providers/audio/audio';
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    ConferenceData,
     UserData,
     InAppBrowser,
     SplashScreen,
