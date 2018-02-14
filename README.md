@@ -33,9 +33,9 @@ $ npm run ionic: serve (OR $ ionic serve)
 ## Screenshots
 
 <p align="center">
-  <img src="https://github.com/MeggaTym/white-noiz/blob/master/resources/screenshots/screen-1.png" width="200"/>
-  <img src="https://github.com/MeggaTym/white-noiz/blob/master/resources/screenshots/screen-2.png" width="200"/>
-  <img src="https://github.com/MeggaTym/white-noiz/blob/master/resources/screenshots/screen-3.png" width="200"/>
-  <img src="https://github.com/MeggaTym/white-noiz/blob/master/resources/screenshots/screen-4.png" width="200"/>
-  <img src="https://github.com/MeggaTym/white-noiz/blob/master/resources/screenshots/screen-5.png" width="200"/>
+  <img src="https://github.com/MeggaTym/white-noiz/blob/master/resources/screenshots/screen-1.png" width="300" style="padding:2px"/>
+  <img src="https://github.com/MeggaTym/white-noiz/blob/master/resources/screenshots/screen-2.png" width="300" style="padding:2px"/>
+  <img src="https://github.com/MeggaTym/white-noiz/blob/master/resources/screenshots/screen-3.png" width="300" style="padding:2px"/>
+  <img src="https://github.com/MeggaTym/white-noiz/blob/master/resources/screenshots/screen-4.png" width="300" style="padding:2px"/>
+  <img src="https://github.com/MeggaTym/white-noiz/blob/master/resources/screenshots/screen-5.png" width="300" style="padding:2px"/>
 </p>
