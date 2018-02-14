@@ -32,4 +32,4 @@ $ npm run ionic: serve (OR $ ionic serve)
 
 ## Screenshots
 
-
+https://github.com/MeggaTym/white-noiz/blob/master/resources/screenshots/screen-1.png
