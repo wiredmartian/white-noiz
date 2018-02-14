@@ -7,15 +7,15 @@ This app uses RadAudio's Web API 2 also hosted on azure @
 http://api-whitenoiz.azurewebsites.net
 
 ## API Endpoints
-`**/api/tracks**` - Gets all songs with their associated artists
+`/api/tracks` - Gets all songs with their associated artists
 
-`**/api/toptracks**` - Gets all top songs based on plays and date they were uploaded
+`/api/toptracks` - Gets all top songs based on plays and date they were uploaded
 
-`**/api/tracks/{id}**` - Gets One track's details
+`/api/tracks/{id}` - Gets One track's details
 
-`**/api/artists/{id}**` - Gets an artist's details
+`/api/artists/{id}` - Gets an artist's details
 
-`**/token**` - Bearer authentication endpoint (accepts: username/email, password and grant_type)
+`/token` - Bearer authentication endpoint (accepts: username/email, password and grant_type)
 
 
 ## Get Started
