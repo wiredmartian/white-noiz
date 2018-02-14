@@ -32,7 +32,9 @@ $ npm run ionic: serve (OR $ ionic serve)
 
 ## Screenshots
 
-![alt text](https://github.com/MeggaTym/white-noiz/blob/master/resources/screenshots/screen-1.png)
+<p>
+  <img src="https://github.com/MeggaTym/white-noiz/blob/master/resources/screenshots/screen-1.png" width="60"/>
+  </p>
 ![alt text](https://github.com/MeggaTym/white-noiz/blob/master/resources/screenshots/screen-2.png)
 ![alt text](https://github.com/MeggaTym/white-noiz/blob/master/resources/screenshots/screen-3.png)
 ![alt text](https://github.com/MeggaTym/white-noiz/blob/master/resources/screenshots/screen-4.png)
