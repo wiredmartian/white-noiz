@@ -27,12 +27,17 @@ export class TrackListPage {
   }
 
   ionViewDidLoad(){
-    this.presentLoading();
     this.getTracks();
   }
   getTracks(){
-      this.provider.getTracks().subscribe(res => {
-            this.tracks =  res;
+    let loading = this.loadingCtrl.create({
+      content: 'Fetching data...'
+    });
+    loading.present()
+
+    this.provider.getTracks().subscribe(res => {
+        this.tracks =  res;
+        loading.dismiss();
     });
   }
   goToTrackDetail(track: any){
@@ -44,14 +49,6 @@ export class TrackListPage {
     this.navCtrl.push(ArtistDetailPage, {
       artist: artist
     });
-  }
-
-  presentLoading() {
-    let loader = this.loadingCtrl.create({
-      content: "Please wait...",
-      duration: 5000,
-    });
-    loader.present();
   }
 
 }

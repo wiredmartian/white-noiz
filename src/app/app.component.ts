@@ -8,7 +8,6 @@ import { Storage } from '@ionic/storage';
 import { AboutPage } from '../pages/about/about';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { SupportPage } from '../pages/support/support';
 import { TrackListPage } from '../pages/track-list/track-list';
@@ -41,9 +40,9 @@ export class ConferenceApp {
   // the left menu only works after login
   // the login page disables the left menu
   appPages: PageInterface[] = [
-    { title: 'Albums', name: 'TabsPage', component: TabsPage, tabComponent: AlbumListPage, index: 0, icon: 'disc'},
-    { title: 'Songs', name: 'TabsPage', component: TabsPage, tabComponent: TrackListPage, index: 1, icon: 'musical-notes'},
-    { title: 'Charts', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 2, icon: 'information-circle' }
+    { title: 'Songs', name: 'TabsPage', component: TabsPage, tabComponent: TrackListPage, index: 0, icon: 'musical-notes'},
+    { title: 'Albums', name: 'TabsPage', component: TabsPage, tabComponent: AlbumListPage, index: 1, icon: 'disc'},
+    { title: 'Charts', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 2, icon: 'stats' }
   ];
   loggedInPages: PageInterface[] = [
     { title: 'Account', name: 'AccountPage', component: AccountPage, icon: 'person' },
@@ -53,7 +52,6 @@ export class ConferenceApp {
   loggedOutPages: PageInterface[] = [
     { title: 'Login', name: 'LoginPage', component: LoginPage, icon: 'log-in' },
     { title: 'Support', name: 'SupportPage', component: SupportPage, icon: 'help' },
-    { title: 'Signup', name: 'SignupPage', component: SignupPage, icon: 'person-add' }
   ];
   rootPage: any;
 

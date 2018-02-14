@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiProvider } from '../api/api';
-//import { UserModel } from '../../models/user-model';
 import { Storage } from '@ionic/storage';
+import { MenuController } from 'ionic-angular';
 
 
 @Injectable()
@@ -12,7 +12,8 @@ export class AccountProvider {
 
   constructor(
     private provider: ApiProvider, 
-    private storage: Storage) {
+    private storage: Storage,
+    private menu: MenuController) {
     this.getUsername();
   }
 
@@ -46,6 +47,7 @@ export class AccountProvider {
     this.storage.set(this.HAS_LOGGED_IN, true);
     this.storage.set(this.HAS_SEEN_HOME_PAGE, true);
     this.setUsername(username);
+    this.enableMenu(true);
   };
 
   logout(): void {
@@ -53,6 +55,7 @@ export class AccountProvider {
     this.storage.remove(this.HAS_SEEN_HOME_PAGE);
     this.storage.remove('accesstoken');
     this.storage.remove('username');
+    this.enableMenu(false);
   };
 
   hasLoggedIn(): Promise<boolean> {
@@ -64,5 +67,10 @@ export class AccountProvider {
   getUserPicture(username: string){
     return this.provider.http.get(this.provider.apiUrl + 'api/artists/profile/' + username)
     .map(res => res.json());
+  }
+
+  enableMenu(loggedIn: boolean) {
+    this.menu.enable(loggedIn, 'loggedInMenu');
+    this.menu.enable(!loggedIn, 'loggedOutMenu');
   }
 }
