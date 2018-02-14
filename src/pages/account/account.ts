@@ -17,19 +17,20 @@ export class AccountPage {
 
   }
 
-  ngAfterViewInit() {
-    this.getUsername();
+  ionViewDidEnter(){
     this.getProfilePicture();
   }
-
   updatePicture() {
     console.log('Clicked to update picture');
   }
   getProfilePicture(){
     if(this.accProvider.hasLoggedIn()){
-      this.accProvider.getUserPicture(this.username).subscribe(res => {
-        this.picture = 'http://whitenoiz.azurewebsites.net/uploads/' + res;
-      });
+      this.accProvider.getUsername().then(username =>{
+        this.username = username;
+        this.accProvider.getUserPicture(username).subscribe(res =>{
+          this.picture = 'http://whitenoiz.azurewebsites.net/uploads/images/' + res;
+        })
+      })
     }
   }
 

@@ -20,7 +20,9 @@ export class TutorialPage {
     public navCtrl: NavController,
     public menu: MenuController,
     public storage: Storage
-  ) { }
+  ) { 
+    this.startApp();
+  }
 
   startApp() {
     this.navCtrl.push(TabsPage).then(() => {

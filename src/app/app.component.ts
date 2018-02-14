@@ -43,7 +43,7 @@ export class ConferenceApp {
   appPages: PageInterface[] = [
     { title: 'Albums', name: 'TabsPage', component: TabsPage, tabComponent: AlbumListPage, index: 0, icon: 'disc'},
     { title: 'Songs', name: 'TabsPage', component: TabsPage, tabComponent: TrackListPage, index: 1, icon: 'musical-notes'},
-    { title: 'About', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 2, icon: 'information-circle' }
+    { title: 'Charts', name: 'TabsPage', component: TabsPage, tabComponent: AboutPage, index: 2, icon: 'information-circle' }
   ];
   loggedInPages: PageInterface[] = [
     { title: 'Account', name: 'AccountPage', component: AccountPage, icon: 'person' },
