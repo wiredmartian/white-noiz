@@ -6,6 +6,8 @@ import { NavParams } from 'ionic-angular';
 import { AlbumListPage } from '../album-list/album-list';
 import { TrackListPage } from '../track-list/track-list';
 import { AccountPage } from '../account/account';
+import { ChartsPage } from '../charts/charts';
+import { SettingsPage } from '../settings/settings';
 
 
 @Component({
@@ -15,10 +17,10 @@ export class TabsPage {
   // set the root pages for each tab
   tab1Root: any = TrackListPage;
   tab2Root: any = AlbumListPage;
-  tab3Root: any = AlbumListPage;
+  tab3Root: any = ChartsPage;
   tab4Root: any = AccountPage;
-  tab5Root: any = AlbumListPage;
-  
+  tab5Root: any = SettingsPage;
+
   mySelectedIndex: number;
 
   constructor(navParams: NavParams) {

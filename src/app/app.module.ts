@@ -9,14 +9,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { IonicStorageModule } from '@ionic/storage';
 
-import { ConferenceApp } from './app.component';
+import { RadAudioApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
 import { AccountPage } from '../pages/account/account';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
-import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SupportPage } from '../pages/support/support';
 
 import { UserData } from '../providers/user-data';
@@ -34,17 +33,18 @@ import { TrackDetailPage } from '../pages/track-detail/track-detail';
 import { ArtistDetailPage } from '../pages/artist-detail/artist-detail';
 import { AudioProvider } from '../providers/audio/audio';
 import { ChartsProvider } from '../providers/charts/charts';
+import { ChartsPage } from '../pages/charts/charts';
+import { SettingsPage } from '../pages/settings/settings';
 
 
 @NgModule({
   declarations: [
-    ConferenceApp,
+    RadAudioApp,
     AboutPage,
     AccountPage,
     LoginPage,
     SignupPage,
     TabsPage,
-    TutorialPage,
     SupportPage,
 
     AlbumListPage,
@@ -52,16 +52,17 @@ import { ChartsProvider } from '../providers/charts/charts';
     TrackListPage,
     TrackDetailPage,
     ArtistDetailPage,
-    HomePage
+    HomePage,
+    SettingsPage,
+    ChartsPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(ConferenceApp, {}, {
+    IonicModule.forRoot(RadAudioApp, {}, {
       links: [
         { component: TabsPage, name: 'TabsPage', segment: 'tabs-page' },
         { component: AboutPage, name: 'About', segment: 'about' },
-        { component: TutorialPage, name: 'Tutorial', segment: 'tutorial' },
         { component: SupportPage, name: 'SupportPage', segment: 'support' },
         { component: LoginPage, name: 'LoginPage', segment: 'login' },
         { component: AccountPage, name: 'AccountPage', segment: 'account' },
@@ -72,13 +73,12 @@ import { ChartsProvider } from '../providers/charts/charts';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    ConferenceApp,
+    RadAudioApp,
     AboutPage,
     AccountPage,
     LoginPage,
     SignupPage,
     TabsPage,
-    TutorialPage,
     SupportPage,
 
     AlbumListPage,
@@ -86,7 +86,9 @@ import { ChartsProvider } from '../providers/charts/charts';
     TrackListPage,
     TrackDetailPage,
     ArtistDetailPage,
-    HomePage
+    HomePage,
+    SettingsPage,
+    ChartsPage
 
   ],
   providers: [
