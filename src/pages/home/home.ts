@@ -1,9 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, MenuController, Slides, NavController } from 'ionic-angular';
+import { IonicPage, MenuController, Slides} from 'ionic-angular';
 import { TrackProvider } from '../../providers/track/track';
 import { TrackInterface } from '../../interfaces/track';
-import { TabsPage } from '../../../.tmp/src/pages/tabs-page/tabs-page';
-import { Storage } from '@ionic/storage';
 
 @IonicPage()
 @Component({
@@ -20,8 +18,6 @@ export class HomePage {
   constructor(
     private menu: MenuController,
     private provider : TrackProvider,
-    private navCtrl: NavController,
-    private storage: Storage
   ){ 
   }
 

@@ -33,6 +33,7 @@ import { TrackListPage } from '../pages/track-list/track-list';
 import { TrackDetailPage } from '../pages/track-detail/track-detail';
 import { ArtistDetailPage } from '../pages/artist-detail/artist-detail';
 import { AudioProvider } from '../providers/audio/audio';
+import { ChartsProvider } from '../providers/charts/charts';
 
 
 @NgModule({
@@ -98,7 +99,8 @@ import { AudioProvider } from '../providers/audio/audio';
     ArtistProvider,
     AccountProvider,
     ApiProvider,
-    AudioProvider
+    AudioProvider,
+    ChartsProvider
   ]
 })
 export class AppModule { }

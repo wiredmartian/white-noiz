@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController, NavController } from 'ionic-angular';
 import { AccountProvider } from '../../providers/account/account';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-account',
@@ -18,7 +19,13 @@ export class AccountPage {
   }
 
   ionViewDidEnter(){
-    this.getProfilePicture();
+    this.accProvider.hasLoggedIn().then(IsLoggedIn =>{
+      if(IsLoggedIn){
+        this.getProfilePicture();
+      } else{
+        this.nav.push(LoginPage);
+      }
+    });
   }
   updatePicture() {
     console.log('Clicked to update picture');
