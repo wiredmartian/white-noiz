@@ -21,7 +21,7 @@ export class TutorialPage {
     public menu: MenuController,
     public storage: Storage
   ) { 
-    this.startApp();
+
   }
 
   startApp() {

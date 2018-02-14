@@ -8,7 +8,7 @@ import { Storage } from '@ionic/storage';
 export class AccountProvider {
   endpoint: string = 'token';
   HAS_LOGGED_IN = 'hasLoggedIn';
-  HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
+  HAS_SEEN_HOME_PAGE = 'HAS_SEEN_HOME_PAGE';
 
   constructor(
     private provider: ApiProvider, 
@@ -44,11 +44,13 @@ export class AccountProvider {
 
   login(username: string): void {
     this.storage.set(this.HAS_LOGGED_IN, true);
+    this.storage.set(this.HAS_SEEN_HOME_PAGE, true);
     this.setUsername(username);
   };
 
   logout(): void {
     this.storage.remove(this.HAS_LOGGED_IN);
+    this.storage.remove(this.HAS_SEEN_HOME_PAGE);
     this.storage.remove('accesstoken');
     this.storage.remove('username');
   };
