@@ -20,15 +20,15 @@ http://api-whitenoiz.azurewebsites.net
 
 ## Get Started
 **This is Ionic 3 with Angular 4. Before cloning this, make sure you have Ionic and the Angular-CLI install** 
+```bash
+$ npm install -g ionic@latest cordova
 
-$npm install -g ionic@latest cordova
+$ cd .\white-noiz
 
-$npm install
+$ npm install
 
-$cd .\white-noiz
-
-$npm run ionic: serve (OR $ ionic serve)
-
+$ npm run ionic: serve (OR $ ionic serve)
+```
 
 ## Screenshots
 
