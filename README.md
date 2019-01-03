@@ -19,7 +19,7 @@ http://api-whitenoiz.azurewebsites.net
 
 
 ## Get Started
-**This is Ionic 3 with Angular 4. Before cloning this, make sure you have Ionic and the Angular-CLI install** 
+**This is Ionic 3 with Angular 5. Before cloning this, make sure you have Ionic and the Angular-CLI install** 
 ```bash
 $ npm install -g ionic@latest cordova
 
